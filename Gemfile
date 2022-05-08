@@ -1,10 +1,12 @@
+# frozen_string_literal: true
+
 source 'https://rubygems.org'
 
-gem 'pry'
-gem 'rest-client'
-gem 'faker'
-gem 'rspec'
-gem 'rake'
 gem 'activerecord'
-gem 'sqlite3'
+gem 'faker'
+gem 'pry'
+gem 'rake'
+gem 'rest-client'
+gem 'rspec'
 gem 'rubocop'
+gem 'sqlite3'

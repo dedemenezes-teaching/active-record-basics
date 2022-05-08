@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'rspec/core/rake_task'
 RSpec::Core::RakeTask.new(:spec)
 
@@ -8,7 +10,7 @@ task :rubocop do
   sh 'rubocop --format simple || true'
 end
 
-task default: [:rubocop, :spec]
+task default: %i[rubocop spec]
 
 desc 'Open an irb session preloaded with the environment'
 task :console do
@@ -39,7 +41,7 @@ db_namespace = namespace :db do
     version = ENV['VERSION'] ? ENV['VERSION'].to_i : nil
     args = [ActiveRecord::Migrator.migrations_paths, ActiveRecord::SchemaMigration]
     ActiveRecord::MigrationContext.new(*args).migrate(version)
-    db_namespace["schema:dump"].invoke
+    db_namespace['schema:dump'].invoke
   end
 
   desc 'Retrieves the current schema version number'
@@ -63,7 +65,7 @@ db_namespace = namespace :db do
       require 'active_record/schema_dumper'
       filename = 'db/schema.rb'
 
-      File.open(filename, "w:utf-8") do |file|
+      File.open(filename, 'w:utf-8') do |file|
         ActiveRecord::SchemaDumper.dump(ActiveRecord::Base.connection, file)
       end
     end
